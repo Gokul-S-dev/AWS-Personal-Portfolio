@@ -1,0 +1,720 @@
+/* ===========================
+   ROOT & GLOBAL VARIABLES
+   =========================== */
+:root {
+    --primary-color: #FF9900;
+    --primary-dark: #FF8800;
+    --primary-light: #FFAA11;
+    --dark-bg: #0f0f0f;
+    --darker-bg: #1a1a1a;
+    --card-bg: #252525;
+    --border-color: #333333;
+    --text-light: #e0e0e0;
+    --text-muted: #999999;
+    --success: #28a745;
+    --warning: #ffc107;
+    --info: #17a2b8;
+}
+
+/* ===========================
+   GLOBAL STYLES
+   =========================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* ===========================
+   NAVBAR
+   =========================== */
+.navbar {
+    background-color: rgba(15, 15, 15, 0.95) !important;
+    border-bottom: 2px solid var(--primary-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: var(--primary-color) !important;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+    text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+    transform: translateY(-2px);
+}
+
+.navbar-brand i {
+    margin-right: 8px;
+}
+
+.nav-link {
+    margin: 0 10px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* ===========================
+   HERO SECTION
+   =========================== */
+.hero-section {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    position: relative;
+    overflow: hidden;
+    margin-top: 56px;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 1000px;
+    height: 1000px;
+    background: radial-gradient(circle, rgba(255, 153, 0, 0.1) 0%, transparent 70%);
+    animation: float 20s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+    50% {
+        transform: translateY(20px) translateX(20px);
+    }
+}
+
+.hero-content {
+    z-index: 2;
+    position: relative;
+    animation: slideInDown 0.8s ease;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: slideInUp 0.8s ease 0.2s both;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.accent-text {
+    color: var(--primary-color);
+    text-shadow: 0 0 20px rgba(255, 153, 0, 0.5);
+}
+
+/* Typing Animation */
+.typing-animation {
+    display: inline-block;
+    border-right: 3px solid var(--primary-color);
+    padding-right: 5px;
+    animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 32ch;
+    }
+}
+
+@keyframes blink {
+    0%, 50% {
+        border-color: var(--primary-color);
+    }
+    50%, 100% {
+        border-color: transparent;
+    }
+}
+
+.hero-content .btn {
+    animation: slideInUp 0.8s ease 0.4s both;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #000;
+    font-weight: 600;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    border-color: var(--primary-dark);
+    box-shadow: 0 0 20px rgba(255, 153, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.btn-outline-light {
+    border-color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-light:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 20px rgba(255, 153, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===========================
+   SECTIONS
+   =========================== */
+.section {
+    position: relative;
+    padding: 60px 0;
+}
+
+.bg-darker {
+    background-color: var(--darker-bg);
+}
+
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.accent-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    margin: 0 auto;
+    border-radius: 2px;
+    animation: expandWidth 0.8s ease;
+}
+
+@keyframes expandWidth {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80px;
+    }
+}
+
+/* ===========================
+   ABOUT SECTION
+   =========================== */
+.about-image {
+    text-align: center;
+    font-size: 200px;
+    color: var(--primary-color);
+    opacity: 0.2;
+    animation: float 4s ease-in-out infinite;
+}
+
+.skill-badge {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 15px rgba(255, 153, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.skill-badge i {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.skill-details {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ===========================
+   CERTIFICATION CARDS
+   =========================== */
+.certification-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.certification-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(255, 153, 0, 0.15);
+}
+
+.certification-card.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    border-radius: 12px 12px 0 0;
+}
+
+.cert-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.cert-badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.certification-card.active .cert-badge {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.certification-card.coming-soon .cert-badge {
+    background-color: rgba(255, 193, 7, 0.2);
+    color: var(--warning);
+    border: 1px solid var(--warning);
+}
+
+/* ===========================
+   EVENT CARDS
+   =========================== */
+.event-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.event-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 10px 25px rgba(255, 153, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.event-date {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    border-radius: 8px;
+    padding: 12px 15px;
+    text-align: center;
+    min-width: 70px;
+    color: #000;
+    font-weight: 600;
+}
+
+.event-date .day {
+    display: block;
+    font-size: 1.3rem;
+}
+
+.event-date .month {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.event-card .badge {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    font-weight: 600;
+}
+
+/* ===========================
+   PROJECT CARDS
+   =========================== */
+.project-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.project-card:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 15px 40px rgba(255, 153, 0, 0.2);
+    transform: translateY(-10px);
+}
+
+.project-image {
+    height: 150px;
+    background: linear-gradient(135deg, var(--darker-bg), var(--card-bg));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: #000;
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tech-tag {
+    display: inline-block;
+    background-color: rgba(255, 153, 0, 0.15);
+    color: var(--primary-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 153, 0, 0.3);
+}
+
+.project-card .btn-sm {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    transition: all 0.3s ease;
+}
+
+.project-card .btn-outline-warning {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.project-card .btn-outline-warning:hover {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+/* ===========================
+   CONTACT SECTION
+   =========================== */
+.contact-form {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    animation: slideInLeft 0.8s ease;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--text-light);
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control:focus {
+    background-color: rgba(255, 153, 0, 0.05);
+    border-color: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 0 0 0.2rem rgba(255, 153, 0, 0.25);
+}
+
+.form-label {
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.contact-info {
+    animation: slideInRight 0.8s ease;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #000;
+    transform: translateY(-5px) rotate(5deg);
+    box-shadow: 0 8px 20px rgba(255, 153, 0, 0.3);
+}
+
+/* ===========================
+   FOOTER
+   =========================== */
+footer {
+    background-color: var(--darker-bg);
+    border-top: 2px solid var(--border-color);
+    margin-top: 60px;
+}
+
+footer p {
+    margin-bottom: 0;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .typing-animation {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        border-right: 0;
+    }
+
+    .navbar {
+        padding: 0.5rem 0;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .hero-section {
+        min-height: 60vh;
+    }
+
+    .contact-form,
+    .contact-info {
+        margin-bottom: 30px;
+    }
+
+    .hero-content .d-flex {
+        flex-direction: column;
+        gap: 1rem !important;
+    }
+
+    .hero-content .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .hero-section::before {
+        width: 500px;
+        height: 500px;
+    }
+
+    .skill-badge {
+        margin-bottom: 12px;
+    }
+
+    .certification-card,
+    .event-card,
+    .project-card {
+        margin-bottom: 15px;
+    }
+
+    footer {
+        text-align: center;
+    }
+}
+
+/* ===========================
+   UTILITIES
+   =========================== */
+.text-warning {
+    color: var(--primary-color) !important;
+}
+
+.btn-outline-warning {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline-warning:hover {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+/* Smooth Transitions */
+* {
+    transition-property: background-color, border-color, color, box-shadow, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+input,
+textarea,
+.btn {
+    transition: all 0.3s ease !important;
+}
+
+/* Selection Color */
+::selection {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+::-moz-selection {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+/* Smooth Scrolling for Navigation */
+html {
+    scroll-behavior: smooth;
+}
