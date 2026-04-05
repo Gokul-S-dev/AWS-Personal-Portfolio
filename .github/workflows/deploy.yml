@@ -26,6 +26,9 @@ jobs:
             - name: Build
               run: npm run build
 
+            - name: Verify build output (DEBUG)
+              run: ls -la
+
             - name: Deploy to Github Pages
               uses: peaceiris/actions-gh-pages@v3
               with:
